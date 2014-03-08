@@ -43,4 +43,7 @@ Implementation tools
 4) Ripple emulator for chrome
 	* เป็น extension ที่จำลองหน้าเว็บสำหรับอุปกรณ์ต่าง ๆ ช่วยทดสอบในเบื้องต้น
 	* Download: https://chrome.google.com/webstore/detail/ripple-emulator-beta/geelfhphabnejjhdalkjhgipohgpdnoc
-
+	* Add Chome Ripple Debugger in aptana
+    	1. Run -> Run Configurations... -> Right Click on "Web Browser" -> Add
+		2. Name = Chrome Ripple, Browser executable = C:\Program Files\Google\Chrome\Application\chrome.exe, Arguments = --enable-extensions --allow-file-access-from-files
+		Ref : http://www.youtube.com/watch?v=B13BU4gcn-g
