@@ -12,5 +12,6 @@ pg.connect(conString, function(err, client, done) {
       return console.error('error running query', err);
     }
     console.log(result.rows[0].testname);
+    console.log('testprint');
   });
 });
