@@ -35,6 +35,7 @@ Implementation tools
 1) Aptana Studio 3 
 	* IDE เป็น version หนึ่งที่มาจาก eclipse แต่ตัดเฉพาะที่จะใช้จริง ๆ หากไม่รองรับสิ่งที่ต้องการใช้ สามารถเปลี่ยนไปใช่ eclipse ได้ เพราะ aptana มี plug-in สำหรับ eclipse ด้วย
 	* Ref: http://aptana.com
+	* ลอง plug-in eclipse แล้วใช้ได้
 2) Script Debugger for Windows NT 4.0 and Later 
 	* Aptana จะใช้ในการ debug javascript บน IE
 	* Download: http://www.microsoft.com/en-us/download/details.aspx?id=22185
@@ -47,3 +48,11 @@ Implementation tools
     	1. Run -> Run Configurations... -> Right Click on "Web Browser" -> Add
 		2. Name = Chrome Ripple, Browser executable = C:\Program Files\Google\Chrome\Application\chrome.exe, Arguments = --enable-extensions --allow-file-access-from-files
 		Ref : http://www.youtube.com/watch?v=B13BU4gcn-g
+5) Nodeclipse
+    * เอาไว้  debug node.js
+    * http://www.nodeclipse.org/updates/
+    * ลองติดตั้งกับ eclipse แล้วใช้ได้
+6) Egit
+    * เอาไว้ใช้ git บน eclipse
+    * http://download.eclipse.org/egit/updates
+    * copy and paste it into the “Help > Install new software” dialog
