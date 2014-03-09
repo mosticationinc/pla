@@ -39,6 +39,7 @@ Implementation tools
 2) Script Debugger for Windows NT 4.0 and Later 
 	* Aptana จะใช้ในการ debug javascript บน IE
 	* Download: http://www.microsoft.com/en-us/download/details.aspx?id=22185
+	* ทำไมใช้ไม่ได้ไม่รู้ ไปใช้ firefox extension แทนได้
 3) Firefox + debugger extensions
 	* aptana ใช้ debug ตอน debug ครั้งแรกจะมีให้โหลดมาติดตั้ง)
 4) Ripple emulator for chrome
