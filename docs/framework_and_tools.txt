@@ -36,6 +36,8 @@ Implementation tools
 	* IDE เป็น version หนึ่งที่มาจาก eclipse แต่ตัดเฉพาะที่จะใช้จริง ๆ หากไม่รองรับสิ่งที่ต้องการใช้ สามารถเปลี่ยนไปใช่ eclipse ได้ เพราะ aptana มี plug-in สำหรับ eclipse ด้วย
 	* Ref: http://aptana.com
 	* ลอง plug-in eclipse แล้วใช้ได้
+         หรือ ติดตั้งเป็น eclipse plug-in
+    * Help > Install new software ใส่ที่ติดตั้งเป็น http://download.aptana.com/studio3/plugin/install 
 2) Script Debugger for Windows NT 4.0 and Later 
 	* Aptana จะใช้ในการ debug javascript บน IE
 	* Download: http://www.microsoft.com/en-us/download/details.aspx?id=22185
