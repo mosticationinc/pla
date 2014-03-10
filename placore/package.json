@@ -1,0 +1,14 @@
+{
+  "name": "placore",
+  "version": "0.0.1",
+  "description": "core of pla",
+  "main": "index.js",
+  "author": "mostvending",
+  "license": "MIT",
+  "dependencies": {
+	    "pg": "*",
+	    "express": "*",
+	    "async": "*",
+	    "passport": "*"
+	  }
+}
