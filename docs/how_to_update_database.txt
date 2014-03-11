@@ -1,0 +1,33 @@
+======================================================
+How to update database
+======================================================
+
+วิธี Backup
+-------------------------
+1. ไปที่ pgAdmin
+2. คลิ๊กขวาที่ Table > Backup...
+3. ใน Dialog Box เลือกดังนี้ 
+	- Filename เก็บไว้ใน folder db ของ project ตั้งชื่อไฟล์เป็น yyyymmddhhmm_short_description.sql
+	- Format = Custom
+	- ที่ Tab Dump Options #1 เลือก Pre-Data, Data, Post Data (หรืออื่น ๆ แต่ให้ติด Data มาด้วย)
+	- ที่ Tab Dump Options #2 เลือก Use Column Inserts, Use insert commands
+	- ถ้าต้องการ Backup มากกว่า 1 table สามารถเลือกเพิ่มได้ใน Tab Objects
+4. กด Backup 
+
+
+วิธีสร้าง Database (ทำครั้งเดียว)
+-------------------------
+1. ไปที่ pgAdmin
+2. เลือก Database อะไรก็ได้ที่มีอยู่
+3. ไปที่ Tools > Query tool (หรือกด Ctrl+E)
+4. Open script ที่ใช้สร้าง table 201403101654_Create_DB.sql
+5. Query > Excute pgScript (F6)
+
+
+วิธี Restore
+-------------------------
+1. ไปที่ pgAdmin
+2. เลือก database ที่เป็น pla
+3. ไปที่ Tools > Query tool (หรือกด Ctrl+E)
+4. Open sql ที่ต้องการ Update
+5. Query > Excute (F5)
