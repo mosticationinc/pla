@@ -22,6 +22,3 @@ test("Environment is good",function(){
   
   ok( !!window.Modernizr, "Modernizr global is present")
 })
-
-
-
