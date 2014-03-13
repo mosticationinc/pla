@@ -21,6 +21,20 @@
 
 /*
  * ---------------------------
+ * Imports
+ * ---------------------------
+ */
+
+//	get configurations
+var placonfig = require("../placore/placonfig.js");
+
+//	get logging
+//var mostlogModule = require("../assets/libs/mostication/nodejs/mostlog.js");
+//var mostlog = mostication.nodejs.mostlog;
+
+
+/*
+ * ---------------------------
  * Define module
  * ---------------------------
  */

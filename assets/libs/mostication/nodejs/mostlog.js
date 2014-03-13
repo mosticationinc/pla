@@ -12,7 +12,7 @@
  * 
  * Import this module in your node.js file:
  * var mostlogModule = require("./assets/libs/mostication/nodejs/mostlog.js");		//	refer to package path
- * var mostlog = mostication.nodejs.mostlog		//	make shortened package name for using (optional)
+ * var mostlog = mostication.nodejs.mostlog;		//	make shortened package name for using (optional)
  * 
  * For general case or normal flow in your code:
  * mostlog.log(10, "Hey! this is a message");		//	log
