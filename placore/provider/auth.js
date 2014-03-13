@@ -3,8 +3,6 @@ var passport = require('passport');
 var local_strategy = require('passport-local').Strategy;
 var facebook_strategy = require('passport-facebook').Strategy;
 
-var provider = require('../provider');
-
 exports.login = function (req, res) {
     res.redirect('/payment');
 };

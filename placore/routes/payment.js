@@ -1,8 +1,8 @@
-var provider = require('../provider');
+var dbcon = require('../provider/dbcon.js');
 
 exports.get = function (req, res) {
     var user_id = req.params.id === undefined ? req.user.id : req.params.id;
-    provider.db_con.connect(function (err, client, done) {
+    dbcon.connect(function (err, client, done) {
         if (err) {
             res.send(500, err.message);
         } else {

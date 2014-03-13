@@ -29,11 +29,8 @@ app.post('/login', passport.authenticate('local'), auth.login);
 app.get('/payment/:id?', auth.is_authenticated, payment.get);
 
 http.createServer(app).listen(app.get('port'), function () {
-    mostlog.log(0, "----- Start content -----\n");
-    response.writeHead(200, { "Content-Type": "text/plain" });
-    response.write("Hello World");
-    mostlog.error("this is error\n");
-    mostlog.log(100, "this message does not appear\n");
-    response.end();
+    mostlog.log(0, "----- Start Server -----\n");
+    mostlog.error("But found error\n");
+    mostlog.log(100, "But it's ok\n");
     mostlog.log(1, "----- end content ------\n");
 });
