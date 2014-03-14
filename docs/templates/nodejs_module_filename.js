@@ -35,7 +35,7 @@ var placonfig = require("../placore/placonfig.js");
 
 /*
  * ---------------------------
- * Define module
+ * Define Namespace
  * ---------------------------
  */
 if(typeof(mostication)=="undefined") mostication={};
