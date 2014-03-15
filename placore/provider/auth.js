@@ -16,15 +16,16 @@ exports.local_strategy = function () {
     return new local_strategy(function (user, password, done) {
         do_login(user, password, done);
     });
-}
+};
 
 exports.is_authenticated = function (req, res, next) {
     if (req.isAuthenticated()) {
         next();
     } else {
-        res.send(401, { error: 'Unauthorized' });
+        res.writeHead(301, {Location: 'login.html'});
+        res.end();
     }
-}
+};
 
 passport.serializeUser(function (user, done) {
     done(null, user);

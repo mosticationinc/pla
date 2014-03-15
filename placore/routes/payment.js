@@ -1,22 +1,14 @@
-var dbcon = require('../provider/dbcon.js');
-
 exports.get = function (req, res) {
     var user_id = req.params.id === undefined ? req.user.id : req.params.id;
-    dbcon.connect(function (err, client, done) {
-        if (err) {
-            res.send(500, err.message);
-        } else {
-            client.query('SELECT $1::int AS testnum', ['55'], function (err, result) {
-                done();
-                
-                if(err)
-                    res.send(500, err.message);
-                else
-                {
-                    var ret_string = 'payment info:' + user_id + '&' + result.rows[0].testnum;
-                    res.send(ret_string);
-                }
-            });
-        }
-    });
+    res.send('<html><head><title>testpaypal</title></head><body>'
+    		+ 'User id ' + user_id + ' please click to donate.'
+            + '<form name="_xclick" action="https://www.paypal.com/cgi-bin/webscr" method="post">'
+            + '<input type="hidden" name="cmd" value="_xclick">'
+            + '<input type="hidden" name="business" value="mostvending@live.com">'
+            + '<input type="hidden" name="currency_code" value="USD">'
+            + '<input type="hidden" name="item_name" value="Donate to test project name">'
+            + '<input type="hidden" name="amount" value="111.11">'
+            + '<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="Make payments with PayPal - it\'s fast, free and secure!">'
+            + '<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">'
+            + '</form></body></html>');
 };

@@ -11,7 +11,7 @@ var payment = require('./routes/payment.js');
 
 var app = express();
 
-app.set('port', process.env.PORT || 8080);
+app.set('port', process.env.PORT || 80);
 app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.cookieParser());
@@ -25,6 +25,7 @@ app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 passport.use(auth.local_strategy());
 
+app.get('/',auth.is_authenticated, payment.get);
 app.post('/login', passport.authenticate('local'), auth.login);
 app.get('/payment/:id?', auth.is_authenticated, payment.get);
 

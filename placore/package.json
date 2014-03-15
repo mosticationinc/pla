@@ -23,7 +23,6 @@
     "passport": "*",
     "passport-local": "*",
     "passport-facebook": "*",
-    "paypal-rest-sdk" : "*"
   },
   "readmeFilename": "README.md",
   "bugs": {
