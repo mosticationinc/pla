@@ -11,6 +11,10 @@
  * Using
  * 
  * Import this module in your node.js file:
+ * 1) require package object
+ * var mostlog = require("./assets/libs/mostication/nodejs/mostlog.js");	//	import logging
+ * 
+ * 2) or using namespace
  * var mostlogModule = require("./assets/libs/mostication/nodejs/mostlog.js");		//	refer to package path
  * var mostlog = mostication.nodejs.mostlog;		//	make shortened package name for using (optional)
  * 
@@ -80,3 +84,8 @@ mostication.nodejs.mostlog.error = function(errorMessage){
 	//	show error message
 	mostication.nodejs.mostlog.logEngine(errorMessage);
 };
+
+
+
+//	export
+module.exports = mostication.nodejs.mostlog;

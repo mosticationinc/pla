@@ -1,7 +1,6 @@
 
 
-var mostlogModule = require("../../assets/libs/mostication/nodejs/mostlog.js");
-var mostlog = mostication.nodejs.mostlog;
+var mostlog = require("../../assets/libs/mostication/nodejs/mostlog.js");
 
 
 //	load models

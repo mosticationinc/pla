@@ -34,7 +34,7 @@
  */
 
 //	get configurations
-var placonfig = require("../placore/placonfig.js");
+var placonfig = require("../placonfig.js");
 
 //	get logging
 var mostlogModule = require("../assets/libs/mostication/nodejs/mostlog.js");
