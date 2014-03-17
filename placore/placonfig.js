@@ -46,7 +46,7 @@ if(typeof(placonfig.db)=="undefined") placonfig.db={};		//	define database confi
 placonfig.db.host = "localhost";
 placonfig.db.port = 5432;
 placonfig.db.username = "postgres";
-placonfig.db.password = "admin";
+placonfig.db.password = "public";
 placonfig.db.databaseName = "pla";
 placonfig.db.dbms = "postgres";
 

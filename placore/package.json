@@ -23,6 +23,8 @@
     "passport": "*",
     "passport-local": "*",
     "passport-facebook": "*",
+    "sequelize": "*",
+    "phonegap": "*"
   },
   "readmeFilename": "README.md",
   "bugs": {
