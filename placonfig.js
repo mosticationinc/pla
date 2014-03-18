@@ -33,6 +33,15 @@ if(typeof(placonfig)=="undefined") placonfig={};
  * ---------------------------
  */	
 
+//	environment
+if(typeof(placonfig.env)=="undefined") placonfig.env={};
+placonfig.env.dev = "dev";		//	development environment name
+placonfig.env.prod = "prod";	//	production environment name
+
+//	TODO: Change to production env when deployed.
+placonfig.env.currentEnv = placonfig.env.dev;	//	current environment
+
+
 //	Application configurations set
 if(typeof(placonfig.app)=="undefined") placonfig.app={};	//	define application configurations set
 placonfig.app.applicationName = "PLA";
@@ -62,7 +71,8 @@ placonfig.path.libs = placonfig.path.assets + "libs/";			//	libraries
 
 //	Web URL
 if(typeof(placonfig.webUrl)=="undefined") placonfig.webUrl={};		//	define web path set
-placonfig.webUrl.root = "http://localhost/";					//	web url (if there is http's port, add it to this text)
+placonfig.webUrl.root = "http://localhost/";						//	web url (if there is http's port, add it to this text)
+placonfig.webUrl.port = 80;											//	port of server 
 placonfig.webUrl.css = placonfig.webUrl.root + "asset/css";			//	css
 placonfig.webUrl.img = placonfig.webUrl.root + "asset/img";			//	images
 placonfig.webUrl.libs = placonfig.webUrl.root + "asset/libs";		//	libs

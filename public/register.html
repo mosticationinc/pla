@@ -89,6 +89,8 @@
   </div>
 
   <div data-role="main" class="ui-content">
+  	<form name="vote" action="users/register" method="post" data-ajax="false">
+        <fieldset style = "width:60%;" data-role="controlgroup">
   	<div class="ui-field-contain">
   		<label for="first_name">First Name:</label>
   		<input type="text" name="name" id="first_name" value="">
@@ -105,13 +107,17 @@
   		<label for="user_password">Password:</label>
   		<input type="password" name="password" id="user_password" value="">
   	</div>
+  	</fieldset>
+  	<div data-role="content">
+  		<input value = "SUBMIT" type = "submit" />
+  	</div>
+  	</form>
   </div>
-
   <div data-role="footer">
     <h1>Copyright &copy; 2014 by Mostication Inc.</h1>
   </div>
   
-
+</div>
 
   <!-- JavaScript at the bottom for fast page loading -->
   

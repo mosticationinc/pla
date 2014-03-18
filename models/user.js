@@ -42,12 +42,20 @@ var Sequelize = require("sequelize");
 
 */
 
+//	get encrypted engine
+var crypto = require('crypto');
+
 
 /*
  * ---------------------------
  * Global Setting
  * ---------------------------
  */	
+
+//	password encryption setting
+var passwordHashAlgorithm = 'sha256';
+var passwordEncoding = 'base64';
+
 
 /*
 
@@ -140,6 +148,16 @@ var User = function(sequelize, ormClass) {
 			//	define class methods
 			//method1: function(){ return 'smth' },
 			
+			//	get encrypted password
+			//	
+			//	Parameters:
+			//		- (Str) p = plain text password
+			//	Return:
+			//		- (Str) = Encrypted password
+			getEncryptedPassword: function (p) {
+				return crypto.createHash(passwordHashAlgorithm).update(p).digest(passwordEncoding);
+			},
+			
 		},
 		
 		instanceMethods: {
@@ -155,6 +173,17 @@ var User = function(sequelize, ormClass) {
 			//	get long name (first name, middle name, last name)
 			getLongName: function() {
 				return [this.firstName, this.middleName, this.lastName].join(" ");
+			},
+			
+			//	compare password between the given password and this user's password.
+			//
+			//	Parameters:
+			//		- (Str) p = plain text password which compared
+			//	Return:
+			//		- (Bool) = True, if p is this user's password.
+			//					False, if p is not this user's password.
+			isSamePassword: function(p) {
+				return this.password == User.getEncryptedPassword(p);
 			},
 			
 		}

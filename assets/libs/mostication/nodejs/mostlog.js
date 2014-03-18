@@ -82,7 +82,7 @@ mostication.nodejs.mostlog.log = function(verbose, logMessage){
 //		- None
 mostication.nodejs.mostlog.error = function(errorMessage){
 	//	show error message
-	mostication.nodejs.mostlog.logEngine(errorMessage);
+	mostication.nodejs.mostlog.logEngine("#ERROR: Time = " + Date.now() + "\n" + errorMessage);
 };
 
 

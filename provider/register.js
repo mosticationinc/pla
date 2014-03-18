@@ -29,13 +29,11 @@
 var placonfig = require("../placonfig.js");
 
 //	get logging
-var mostlog = require("../../assets/libs/mostication/nodejs/mostlog.js");
+var mostlog = require("../assets/libs/mostication/nodejs/mostlog.js");
 
 
-var async = require('async');
-var passport = require('passport');
-var local_strategy = require('passport-local').Strategy;
-var facebook_strategy = require('passport-facebook').Strategy;
+//	get models
+var model = require("../models");
 
 
 /*
@@ -71,9 +69,47 @@ if(typeof(mostication.pla.provider.register)=="undefined") mostication.pla.provi
 //	Return:
 //		- ([RETURNED_DATATYPE]) = [RETURNED_DESCRIPTION]
 mostication.pla.provider.register.beginRegister = function (req, res) {
+	
+	mostlog.log(0,"Show a register form...");
+	
 	res.writeHead(301, {Location: 'register.html'});
 	res.end();
 };
+
+
+//[FUNCTION_DESCRIPTION]
+//
+//	Parameters:
+//		- ([DATATYPE1]) [PARAM1] = [PARAM1_DESCRIPTION]
+//		- ([DATATYPE2]) [PARAM2] = [PARAM2_DESCRIPTION]
+//	Return:
+//		- ([RETURNED_DATATYPE]) = [RETURNED_DESCRIPTION]
+mostication.pla.provider.register.createUser = function (req, res) {
+	//res.writeHead(301, {Location: 'register.html'});
+	//res.end();
+	
+	mostlog.log(0,"Creating a user...");
+	
+	//	insert new user to db
+	model.User.create({ 
+		email: req.param('user_email'),
+		firstName: req.param('first_name'),
+		lastName: req.param('last_name'),
+		password: model.User.getEncryptedPassword(req.param('user_password'))	// encrypt password before create
+	})
+	.success(function() {
+		mostlog.log(10,"Created a new user!");
+		
+		//	if user was create, go to login page.
+		res.redirect('/login');
+	});
+	/*
+	.error(function(errors) {
+		//	if error, write log
+		mostlog.error("At mostication.pla.provider.register.createUser\n" + errors);
+	});*/
+};
+
 
 
 //	export
