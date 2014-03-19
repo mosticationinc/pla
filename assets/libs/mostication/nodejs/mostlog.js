@@ -78,11 +78,21 @@ mostication.nodejs.mostlog.log = function(verbose, logMessage){
 //
 //	Parameters:
 //		- (str) errorMessage = your error message.
+//		- (bool)(optional) enableTimeStamp = option for showing error time or not.
+//									- true: show time on log output.
+//									- false: show only error message. (default)
 //	Return:
 //		- None
-mostication.nodejs.mostlog.error = function(errorMessage){
+mostication.nodejs.mostlog.error = function(errorMessage, enableTimeStamp){
+	if (typeof(enableTimeStamp)=="undefined") enableTimeStamp = false;	// default parameter
+	
+	//	if you need to show error time, show the time.
+	if(enableTimeStamp==true) {
+		mostication.nodejs.mostlog.logEngine("#ERROR: Time = " + Date.now());
+	}
+	
 	//	show error message
-	mostication.nodejs.mostlog.logEngine("#ERROR: Time = " + Date.now() + "\n" + errorMessage);
+	mostication.nodejs.mostlog.logEngine(errorMessage);
 };
 
 

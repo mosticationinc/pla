@@ -74,6 +74,7 @@ mostication.pla.provider.register.beginRegister = function (req, res) {
 	
 	res.writeHead(301, {Location: 'register.html'});
 	res.end();
+	//res.render('register.html');
 };
 
 
@@ -89,6 +90,10 @@ mostication.pla.provider.register.createUser = function (req, res) {
 	//res.end();
 	
 	mostlog.log(0,"Creating a user...");
+	mostlog.log(10, "  user_email = " + req.param('user_email'));
+	mostlog.log(10, "  first_name = " + req.param('first_name'));
+	mostlog.log(10, "  last_name = " + req.param('last_name'));
+	mostlog.log(10, "  user_password = " + req.param('user_password'));
 	
 	//	insert new user to db
 	model.User.create({ 
@@ -96,18 +101,29 @@ mostication.pla.provider.register.createUser = function (req, res) {
 		firstName: req.param('first_name'),
 		lastName: req.param('last_name'),
 		password: model.User.getEncryptedPassword(req.param('user_password'))	// encrypt password before create
+		//password: req.param('user_password')
 	})
 	.success(function() {
 		mostlog.log(10,"Created a new user!");
 		
-		//	if user was create, go to login page.
-		res.redirect('/login');
-	});
-	/*
+		//	if user was create, go to first page.
+		res.redirect('/');
+	})
 	.error(function(errors) {
 		//	if error, write log
-		mostlog.error("At mostication.pla.provider.register.createUser\n" + errors);
-	});*/
+		mostlog.error("At mostication.pla.provider.register.createUser",true);
+		mostlog.error(errors.stack);
+		
+		//	show detail of error message (from model validation)
+		for (var prop in errors) {
+	        if (errors.hasOwnProperty(prop))
+	        	mostlog.error("Errors for field " + prop + ": ");
+	        for (var i=0; i<errors[prop].length; ++i) {
+	        	mostlog.error("\t" + errors[prop][i]);
+	        }
+	    }
+		
+	});
 };
 
 

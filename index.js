@@ -83,9 +83,8 @@ app.post('/login', passport.authenticate('local'), auth.login);
 app.get('/payment/:id?', auth.is_authenticated, payment.get);
 
 //	registering process
-app.get('/users/register', register.beginRegister);
-app.post('/users/register', register.createUser);
-//app.get('/users/create',register.createUser);
+app.get('/register', register.beginRegister);
+app.post('/registerdone', register.createUser);
 
 
 //	start server

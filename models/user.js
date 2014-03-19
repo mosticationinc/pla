@@ -27,20 +27,17 @@
  * ---------------------------
  */
 
-/*
 
 //	Import below for testing only
 
 //	get configurations
-var placonfig = require("../placore/placonfig.js");
+//var placonfig = require("../placore/placonfig.js");
 
 //	get logging
-var mostlogModule = require("../assets/libs/mostication/nodejs/mostlog.js");
-var mostlog = mostication.nodejs.mostlog;
+var mostlog = require("../assets/libs/mostication/nodejs/mostlog.js");
 
-var Sequelize = require("sequelize");
+//var Sequelize = require("sequelize");
 
-*/
 
 //	get encrypted engine
 var crypto = require('crypto');
@@ -97,10 +94,25 @@ var User = function(sequelize, ormClass) {
 		//id:	{ type: Sequelize.BIGINT, autoIncrement: true, primaryKey: true, comment: "user id (reference key of user in the application)"},
 		
 		// unique email (doesn't register with the same email)
-		email: { type: ormClass.STRING, allowNull: false, unique: true, validate: {isEmail:true}, comment: "email of user (unique email)" },
+		email: { 
+					type: ormClass.STRING, 
+					allowNull: false, 
+					unique: true, 
+					validate: {
+						isEmail: {
+							args: true,						//	enable email validation
+							msg: "Must be email formatting",	//	error message
+						},
+					}, 
+					comment: "email of user (unique email)" 
+				},
 		
 		//	password
-		password: { type: ormClass.STRING, allowNull: false, comment: "encoded password" },
+		password: { 
+					type: ormClass.STRING, 
+					allowNull: false, 
+					comment: "encoded password" 
+				},
 		
 		//	first name
 		firstName: { type: ormClass.STRING },
@@ -182,8 +194,16 @@ var User = function(sequelize, ormClass) {
 			//	Return:
 			//		- (Bool) = True, if p is this user's password.
 			//					False, if p is not this user's password.
-			isSamePassword: function(p) {
-				return this.password == User.getEncryptedPassword(p);
+			comparePassword: function(p) {
+				//	TODO: fixed this statement and use User.getEncrptedPassword()
+				return this.password == crypto.createHash(passwordHashAlgorithm).update(p).digest(passwordEncoding);
+//				//	return as a function because in definition process
+//				//	"User" class doesn't have getEncrptedPassword()
+//				return function(p) {
+//					mostlog.log(0, "p = " + p);
+//					mostlog.log(0, "encrpyed p = " + User.getEncryptedPassword(p));
+//					return this.password == User.getEncryptedPassword(p);
+//				};
 			},
 			
 		}

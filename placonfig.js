@@ -35,8 +35,8 @@ if(typeof(placonfig)=="undefined") placonfig={};
 
 //	environment
 if(typeof(placonfig.env)=="undefined") placonfig.env={};
-placonfig.env.dev = "dev";		//	development environment name
-placonfig.env.prod = "prod";	//	production environment name
+placonfig.env.dev = "development";		//	development environment name
+placonfig.env.prod = "production";		//	production environment name
 
 //	TODO: Change to production env when deployed.
 placonfig.env.currentEnv = placonfig.env.dev;	//	current environment
