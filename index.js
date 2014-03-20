@@ -18,6 +18,7 @@ var http = require("http");
 var express = require('express');
 var passport = require('passport');
 var path = require('path');
+var moment = require('moment');		//	date formatting
 
 
 //	get configurations
@@ -54,7 +55,6 @@ process.env.NODE_ENV = placonfig.env.currentEnv;
 
 app.set('port', process.env.PORT || placonfig.webUrl.port);
 app.use(express.favicon());
-app.use(express.logger(placonfig.env.dev));
 app.use(express.cookieParser());
 app.use(express.json());
 app.use(express.urlencoded());
@@ -64,9 +64,27 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(app.router);
 
+//	enable features for production environment
+if ('production' == app.get('env')) {
+	mostlog.logEngine = console.log;		//	use log engine
+	mostlog.verboseFilter = 1;				//	show less errors
+}
+
+//	enable features for development environment
+if ('development' == app.get('env')) {
+	mostlog.logEngine = console.log;		//	use console log
+	mostlog.verboseFilter = 100;			//	show more errors
+	app.use(mostlog.expresslog);			//	logger for express.js (use this instead of express.logger(env))
+	app.use(express.errorHandler());
+}
+
 //	static content that refer to css, img, lang, libs, html
 app.use(express.static(path.join(__dirname, 'public')));		//	html
 app.use('/assets', express.static(__dirname + '/assets'));		//	css, img, lang, libs
+
+//	views
+app.set('views', __dirname + '/views');
+app.set('view engine', 'jade');
 
 passport.use(auth.local_strategy());
 
@@ -91,5 +109,5 @@ app.post('/registerdone', register.createUser);
 http.createServer(app).listen(app.get('port'), function () {
     mostlog.log(0, "----- Start Server -----");
     mostlog.log(0, "  Web server listening on port: " + app.get('port'));
-    mostlog.log(0, "  Started time: " + Date.now());
+    mostlog.log(0, "  Started time: " + moment().format());
 });

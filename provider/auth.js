@@ -75,7 +75,7 @@ function do_login(logingInEmail, logingInPassword, done) {
 				mostlog.log(5, "Wrong password!");
 				
 				//	TODO: please, handle this case
-				//done(null,{});
+				done();
 			}
 		
 		//	if there is no user
@@ -84,7 +84,7 @@ function do_login(logingInEmail, logingInPassword, done) {
 			mostlog.log(5, "Sorry! There is no user that email is " + logingInEmail);
 			
 			//	TODO: please, handle this case
-			//done(null,{});
+			done();
 		}
 		
 	})
@@ -94,7 +94,7 @@ function do_login(logingInEmail, logingInPassword, done) {
 		mostlog.error(errors.stack);
 		
 		//	TODO: please, handle this case
-		//done(null,{});
+		done();
 	});
 	
 }

@@ -28,6 +28,16 @@
  * 
  */
 
+/*
+ * ---------------------------
+ * Import
+ * ---------------------------
+ */
+
+//	date formatting package (TODO: should not import any package in this module.
+//	but I don't know how to print date format. so, fix this later. -- from Tum)
+var moment = require("moment");
+
 
 /*
  * ---------------------------
@@ -88,12 +98,28 @@ mostication.nodejs.mostlog.error = function(errorMessage, enableTimeStamp){
 	
 	//	if you need to show error time, show the time.
 	if(enableTimeStamp==true) {
-		mostication.nodejs.mostlog.logEngine("#ERROR: Time = " + Date.now());
+		mostication.nodejs.mostlog.logEngine("#ERROR: [" + moment().format() + "]");
 	}
 	
 	//	show error message
 	mostication.nodejs.mostlog.logEngine(errorMessage);
 };
+
+
+//	Use this function instead of express.logger(env)
+//
+//	Parameters:
+//		- (Req) req = request object
+//		- (Res) res = response object
+//		- (Callback) next = callback function for doing next step
+mostication.nodejs.mostlog.expresslog = function(req, res, next) {
+	//	show log
+	mostication.nodejs.mostlog.logEngine('[%s] %s %s', moment().format(), req.method, req.url);
+	
+	//	goto next step
+	next();
+};
+
 
 
 

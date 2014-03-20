@@ -24,7 +24,8 @@
     "passport-local": "*",
     "passport-facebook": "*",
     "sequelize": "*",
-    "phonegap": "*"
+    "phonegap": "*",
+    "moment": "*"
   },
   "devDependencies": { 
 	  "nodemon": "*" 

@@ -85,7 +85,7 @@ mostication.pla.provider.register.beginRegister = function (req, res) {
 //		- ([DATATYPE2]) [PARAM2] = [PARAM2_DESCRIPTION]
 //	Return:
 //		- ([RETURNED_DATATYPE]) = [RETURNED_DESCRIPTION]
-mostication.pla.provider.register.createUser = function (req, res) {
+mostication.pla.provider.register.createUser = function (req, res, next) {
 	//res.writeHead(301, {Location: 'register.html'});
 	//res.end();
 	
@@ -124,6 +124,10 @@ mostication.pla.provider.register.createUser = function (req, res) {
 	    }
 		
 	});
+	
+	//	do next
+	next();
+	
 };
 
 
