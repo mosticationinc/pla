@@ -2,6 +2,27 @@
 How to update database
 ======================================================
 
+1. ถ้ายังไม่ได้สร้าง Database 
+	1.1 ไปที่ pgAdmin
+	1.2 เลือก Database อะไรก็ได้ที่มีอยู่
+	1.3 ไปที่ Tools > Query tool (หรือกด Ctrl+E)
+	1.4 Open script ที่ใช้สร้าง table 201403101654_Create_DB.sql
+	1.5 Query > Excute pgScript (F6)
+2. ตั้งค่า placonfig.js ให้ตรงกับ Database
+3. เปิด node commpand prompt
+4. run คำสั่งเพื่อสร้าง table ดังนี้
+		node [Project Root Directory]\admin\tools\db\createmodeltable.js
+
+
+
+
+
+
+
+
+Below steps are obsolete!
+======================================================
+
 วิธี Backup
 -------------------------
 1. ไปที่ pgAdmin
